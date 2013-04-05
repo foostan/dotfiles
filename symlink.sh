@@ -7,3 +7,5 @@ do
         ln -Fis "$PWD/$dotfile" $HOME
     fi
 done
+cd .vim/bundle/
+git clone git://github.com/Shougo/neobundle.vim.git
