@@ -6,3 +6,7 @@ caption always "%-w%10L>%{=b bw}%n %t%{-}%+w%-0="
 hardstatus alwayslastline "%H%=%Y/%m/%d %02c"
 
 termcapinfo xterm* ti@:te@
+
+shell zsh
+
+escape 
