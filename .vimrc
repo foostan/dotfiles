@@ -50,6 +50,8 @@ set wildchar=<tab>                 " コマンド補完を開始するキー
 set wildmode=list:full             " リスト表示，最長マッチ
 set history=1000                   " コマンド・検索パターンの履歴数
 set complete+=k                    " 補完に辞書ファイル追加
+set backspace=indent,eol,start     " バックスペースの設定
+
 "}}}
 
 "--------------------------------------------------
@@ -57,6 +59,7 @@ set complete+=k                    " 補完に辞書ファイル追加
 "--------------------------------------------------
 "{{{
 syntax enable                      " ハイライト有効化
+set cursorline                     " カーソルのハイライト
 set showmatch                      " カッコの対応のハイライト
 set number                         " 行番号の表示
 set list                           " 不可視文字の表示

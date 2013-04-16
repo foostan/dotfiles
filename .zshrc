@@ -79,8 +79,9 @@ alias ll="ls -al"
 alias du="du -h"
 alias df="df -h"
 alias su="su -l"
-alias vim="nocorrect vim"
 alias screen="export SCREEN=YES ; screen -U -T ${TERM}"
+alias vim="nocorrect vim"
+alias vagrant='nocorrect vagrant'
 ## terminal configuration
 unset LSCOLORS
 case "${TERM}" in
