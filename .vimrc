@@ -35,7 +35,7 @@ set browsedir=buffer               " Exploreの初期ディレクトリ
 set ruler                          " ルーラの表示
 set laststatus=2                   " 常にステータスラインを表示
 set showcmd                        " コマンドをステータスラインに表示
-set tabstop=2 shiftwidth=2 softtabstop=0 " インデント設定
+set tabstop=4 shiftwidth=4 softtabstop=0 " インデント設定
 "set noexpandtab                   " タブのスペース変換の無効化
 set expandtab                      " タブのスペース変換の有効化
 set modelines=0                    " modelineの無効化
@@ -108,17 +108,24 @@ let php_folding=1
 "{{{
 filetype plugin indent off
 if has('vim_starting')
-  execute ":set runtimepath+=".$MY_VIMRUNTIME."/bundle/neobundle.vim/"
-  "call neobundle#rc(expand($MY_VIMRUNTIME.'/bundle'))
-  call neobundle#rc(expand('~/.bundle'))
+    set runtimepath+=$MY_VIMRUNTIME/bundle/neobundle.vim/
 endif
+call neobundle#rc(expand('~/.bundle'))
 
-NeoBundle 'Shougo/vimproc'
+NeoBundle 'Shougo/vimproc',{
+      \   'build': {
+      \     'windows' : 'make -f make_mingw32.mak',
+      \     'cygwin'  : 'make -f make_cygwin.mak',
+      \     'mac'     : 'make -f make_mac.mak',
+      \     'unix'    : 'make -f make_unix.mak',
+      \   },
+      \ }
 NeoBundle 'Shougo/neocomplcache'
 NeoBundle 'Shougo/neosnippet'
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'vim-jp/vimdoc-ja'
 filetype plugin indent on
+NeoBundleCheck
 "}}}
 
 "--------------------------------------------------
@@ -215,4 +222,12 @@ let g:neocomplcache_omni_patterns.ruby = '[^. *\t]\.\w*\|\h\w*::'
 let g:neocomplcache_omni_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
 let g:neocomplcache_omni_patterns.c = '\%(\.\|->\)\h\w*'
 let g:neocomplcache_omni_patterns.cpp = '\h\w*\%(\.\|->\)\h\w*\|\h\w*::'
+"}}}
+
+"--------------------------------------------------
+" Uniteの設定
+"--------------------------------------------------
+"{{{
+let g:unite_enable_start_insert=1
+let g:unite_source_history_yank_enable=1
 "}}}

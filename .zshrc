@@ -156,3 +156,5 @@ if [ "$SCREEN" = "YES" ]; then
 fi
 ## load user .zshrc configuration file
 [ -f ~/.zshrc.mine ] && source ~/.zshrc.mine
+
+PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
