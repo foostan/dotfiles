@@ -314,6 +314,9 @@ xnoremap <silent> ;r
 nnoremap <silent> ;w
       \ :<C-u>UniteWithCursorWord -buffer-name=register
       \ buffer file_mru bookmark file<CR>
+nnoremap <silent> ;bw
+      \ :<C-u>UniteWithBufferDir -buffer-name=register
+      \ buffer file_mru bookmark file<CR>
 nnoremap <silent> <C-k>
       \ :<C-u>Unite change jump<CR>
 nnoremap <silent> ;g
@@ -324,6 +327,10 @@ nnoremap <silent> ;r
 " window
 nnoremap <silent> [Window]s
             \ :<C-u>Unite -buffer-name=files -no-split -multi-line
+            \ jump_point file_point buffer_tab
+            \ file_rec/async:! file file/new file_mru<CR>
+nnoremap <silent> [Window]bs
+            \ :<C-u>UniteWithBufferDir -buffer-name=files -no-split -multi-line
             \ jump_point file_point buffer_tab
             \ file_rec/async:! file file/new file_mru<CR>
 nnoremap <silent> [Window]w
