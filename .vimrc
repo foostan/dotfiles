@@ -92,6 +92,12 @@ nnoremap k gk
 nnoremap l <Right>
 nnoremap <Down> gj
 nnoremap <Up>   gk
+nnoremap ;  <Nop>
+xnoremap ;  <Nop>
+nnoremap m  <Nop>
+xnoremap m  <Nop>
+nnoremap ,  <Nop>
+xnoremap ,  <Nop>
 "}}}
 
 "--------------------------------------------------
@@ -100,6 +106,66 @@ nnoremap <Up>   gk
 "{{{
 set foldmethod=marker
 let php_folding=1 
+"}}}
+
+"--------------------------------------------------
+" Windowの設定
+"--------------------------------------------------
+"{{{
+nnoremap    [Window]   <Nop>
+nmap    s [Window]
+nnoremap <silent> [Window]p  :<C-u>call <SID>split_nicely()<CR>
+nnoremap <silent> [Window]v  :<C-u>vsplit<CR>
+nnoremap <silent> [Window]c  :<C-u>call <sid>smart_close()<CR>
+nnoremap <silent> [Window]o  :<C-u>only<CR>
+
+nnoremap <silent> <Tab> :call <SID>NextWindow()<CR>
+nnoremap <silent> <S-Tab> :call <SID>PreviousWindowOrTab()<CR>
+
+function! s:smart_close()
+    if winnr('$') != 1
+        close
+    endif
+endfunction
+
+function! s:NextWindow()
+    if winnr('$') == 1
+        silent! normal! ``z.
+    else
+        wincmd w
+    endif
+endfunction
+
+function! s:NextWindowOrTab()
+    if tabpagenr('$') == 1 && winnr('$') == 1
+        call s:split_nicely()
+    elseif winnr() < winnr("$")
+        wincmd w
+    else
+        tabnext
+        1wincmd w
+    endif
+endfunction
+
+function! s:PreviousWindowOrTab()
+    if winnr() > 1
+        wincmd W
+    else
+        tabprevious
+        execute winnr("$") . "wincmd w"
+    endif
+endfunction
+
+function! s:split_nicely()
+    " Split nicely.
+    if winwidth(0) > 2 * &winwidth
+        vsplit
+    else
+        split
+    endif
+    wincmd p
+endfunction
+
 "}}}
 
 "--------------------------------------------------
@@ -123,7 +189,9 @@ NeoBundle 'Shougo/vimproc',{
 NeoBundle 'Shougo/neocomplcache'
 NeoBundle 'Shougo/neosnippet'
 NeoBundle 'Shougo/unite.vim'
+NeoBundle 'Shougo/unite-outline', '', 'default'
 NeoBundle 'vim-jp/vimdoc-ja'
+
 filetype plugin indent on
 NeoBundleCheck
 "}}}
@@ -228,6 +296,49 @@ let g:neocomplcache_omni_patterns.cpp = '\h\w*\%(\.\|->\)\h\w*\|\h\w*::'
 " Uniteの設定
 "--------------------------------------------------
 "{{{
+
 let g:unite_enable_start_insert=1
 let g:unite_source_history_yank_enable=1
+
+nnoremap    [unite]   <Nop>
+xnoremap    [unite]   <Nop>
+nmap    ;u [unite]
+xmap    ;u [unite]
+
+nnoremap [unite]u  q:Unite<Space>
+nnoremap <silent> ;o
+      \ :<C-u>Unite outline -start-insert -resume<CR>
+nnoremap  [unite]f  :<C-u>Unite source<CR>
+xnoremap <silent> ;r
+      \ d:<C-u>Unite -buffer-name=register register history/yank<CR>
+nnoremap <silent> ;w
+      \ :<C-u>UniteWithCursorWord -buffer-name=register
+      \ buffer file_mru bookmark file<CR>
+nnoremap <silent> <C-k>
+      \ :<C-u>Unite change jump<CR>
+nnoremap <silent> ;g
+      \ :<C-u>Unite grep -buffer-name=search -auto-preview -no-quit -resume<CR>
+nnoremap <silent> ;r
+      \ :<C-u>Unite -buffer-name=register register history/yank<CR>
+
+" window
+nnoremap <silent> [Window]s
+            \ :<C-u>Unite -buffer-name=files -no-split -multi-line
+            \ jump_point file_point buffer_tab
+            \ file_rec/async:! file file/new file_mru<CR>
+nnoremap <silent> [Window]w
+            \ :<C-u>Unite window<CR>
+
+" search
+nnoremap <silent> /
+            \ :<C-u>Unite -buffer-name=search -no-split -start-insert line<CR>
+nnoremap <silent> ?
+            \ :<C-u>Unite -buffer-name=search -auto-highlight -start-insert line:backward<CR>
+nnoremap <silent> *
+            \ :<C-u>UniteWithCursorWord -no-split -buffer-name=search line<CR>
+
+nnoremap <silent> n
+            \ :<C-u>UniteResume search -no-start-insert<CR>
 "}}}
+
+
