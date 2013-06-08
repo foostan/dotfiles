@@ -193,7 +193,7 @@ NeoBundle 'Shougo/unite-outline', '', 'default'
 
 NeoBundle 'vim-jp/vimdoc-ja'
 
-NeoBundle 'taichouchou3/vim-javascript'
+NeoBundle 'taichouchou2/vim-javascript'
 NeoBundle 'briancollins/vim-jst'
 
 filetype plugin indent on
