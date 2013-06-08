@@ -6,5 +6,5 @@
 ```
 cd ~/
 git clone git://github.com/foostan/dotfiles.git
-./dotfiles/symlink.sh
+./dotfiles/ini.sh
 ```
