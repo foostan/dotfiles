@@ -243,11 +243,10 @@ NeoBundle 'Shougo/neocomplcache'
 NeoBundle 'Shougo/neosnippet'
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'Shougo/unite-outline', '', 'default'
-
 NeoBundle 'vim-jp/vimdoc-ja'
-
 NeoBundle 'taichouchou2/vim-javascript'
 NeoBundle 'briancollins/vim-jst'
+NeoBundle 'glidenote/memolist.vim'
 
 filetype plugin indent on
 NeoBundleCheck
@@ -406,3 +405,11 @@ nnoremap <silent> n
 "}}}
 
 
+"--------------------------------------------------
+" Memolistの設定
+"--------------------------------------------------
+"{{{
+map <Leader>mn  :MemoNew<CR>
+map <Leader>ml  :MemoList<CR>
+map <Leader>mg  :MemoGrep<CR>
+"}}}
