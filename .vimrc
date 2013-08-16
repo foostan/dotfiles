@@ -104,8 +104,17 @@ xnoremap ,  <Nop>
 " 折りたたみ設定
 "--------------------------------------------------
 "{{{
-set foldmethod=marker
+set foldmethod=syntax
 let php_folding=1 
+let xml_syntax_folding = 1
+
+function! SetFoldMethod()
+    if search("{{{") && search("}}}")
+        set foldmethod=marker
+    endif
+endfunction
+
+au BufRead *.* call SetFoldMethod()
 "}}}
 
 "--------------------------------------------------
