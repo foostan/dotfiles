@@ -256,6 +256,7 @@ NeoBundle 'vim-jp/vimdoc-ja'
 NeoBundle 'taichouchou2/vim-javascript'
 NeoBundle 'briancollins/vim-jst'
 NeoBundle 'glidenote/memolist.vim'
+NeoBundle 'Shougo/vimfiler'
 
 filetype plugin indent on
 NeoBundleCheck
@@ -413,7 +414,6 @@ nnoremap <silent> n
             \ :<C-u>UniteResume search -no-start-insert<CR>
 "}}}
 
-
 "--------------------------------------------------
 " Memolistの設定
 "--------------------------------------------------
@@ -421,4 +421,26 @@ nnoremap <silent> n
 map <Leader>mn  :MemoNew<CR>
 map <Leader>ml  :MemoList<CR>
 map <Leader>mg  :MemoGrep<CR>
+"}}}
+
+"--------------------------------------------------
+" vimfilerの設定
+"--------------------------------------------------
+" vimfiler.vim"{{{
+"nmap    [Space]v   <Plug>(vimfiler_switch)
+nmap  <Space>   [Space]
+xmap  <Space>   [Space]
+nnoremap  [Space]   <Nop>
+xnoremap  [Space]   <Nop>
+nnoremap <silent>   [Space]v   :<C-u>VimFiler -find<CR>
+nnoremap    [Space]ff   :<C-u>VimFilerExplorer<CR>
+
+let bundle = neobundle#get('vimfiler')
+function! bundle.hooks.on_source(bundle)
+  let g:vimfiler_enable_clipboard = 0
+  let g:vimfiler_safe_mode_by_default = 0
+  let g:vimfiler_as_default_explorer = 1
+endfunction
+
+unlet bundle
 "}}}
