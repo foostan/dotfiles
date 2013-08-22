@@ -228,6 +228,15 @@ map <silent> [Tag]n :tabnext<CR>
 " tn 次のタブ
 map <silent> [Tag]p :tabprevious<CR>
 " tp 前のタブ
+"
+" カレントウインドウを新しいタブで開く
+nnoremap <silent> [Tag]m :call OpenNewTab()<CR>
+function! OpenNewTab()
+    let f = expand("%:p")
+    execute ":q"
+    execute ":tabnew ".f
+endfunction
+
 "}}}
 
 "--------------------------------------------------
