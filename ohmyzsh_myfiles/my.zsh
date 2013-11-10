@@ -46,10 +46,12 @@ alias where="command -v"
 alias j="jobs -l"
 case "${OSTYPE}" in
 freebsd*|darwin*)
- alias ls="ls -a -G -w -F"
+ alias ls="ls -G -w -F"
+ alias la="la -a"
  ;;
 linux*)
- alias ls="ls -a --color"
+ alias ls="ls --color"
+ alias la="la -a"
  ;;
 esac
 alias ll="ls -al"
