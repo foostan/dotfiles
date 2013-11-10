@@ -59,6 +59,7 @@ alias su="su -l"
 alias screen="export SCREEN=YES ; screen -U -T ${TERM}"
 alias vim="nocorrect vim"
 alias vagrant='nocorrect vagrant'
+alias va='vagrant'
 ## terminal configuration
 unset LSCOLORS
 case "${TERM}" in
@@ -133,5 +134,8 @@ if [ "$SCREEN" = "YES" ]; then
 fi
 ## load user .zshrc configuration file
 [ -f ~/.zshrc.mine ] && source ~/.zshrc.mine
+
+# autojump
+[[ -s ~/.autojump/etc/profile.d/autojump.zsh ]] && . ~/.autojump/etc/profile.d/autojump.zsh
 
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
