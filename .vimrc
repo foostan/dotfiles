@@ -35,7 +35,8 @@ set browsedir=buffer               " Exploreの初期ディレクトリ
 set ruler                          " ルーラの表示
 set laststatus=2                   " 常にステータスラインを表示
 set showcmd                        " コマンドをステータスラインに表示
-set tabstop=2 shiftwidth=2 softtabstop=0 " インデント設定
+set tabstop=4 shiftwidth=4 softtabstop=0 " インデント設定
+autocmd FileType ruby set tabstop=2 shiftwidth=2 softtabstop=0 " インデント設定
 "set noexpandtab                   " タブのスペース変換の無効化
 set expandtab                      " タブのスペース変換の有効化
 set modelines=0                    " modelineの無効化
