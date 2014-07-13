@@ -140,7 +140,7 @@ export PATH="$HOME/.gem/ruby/2.0.0/bin:$PATH"
 # Node
 #==============================
 [[ -s /Users/foostan/.nvm/nvm.sh ]] && . /Users/foostan/.nvm/nvm.sh
-nvm use v0.10.25
+nvm use v0.10.25 1>/dev/null
 npm_dir=${NVM_PATH}_modules
 export NODE_PATH=$npm_dir
 
