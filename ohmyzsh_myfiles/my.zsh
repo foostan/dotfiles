@@ -1,46 +1,57 @@
-## Language setting
+#==============================
+# Language
+#==============================
 export LANG=ja_JP.UTF-8
 export LC_CTYPE=ja_JP.UTF-8
 export LANG=ja_JP.UTF-8
 export LC_ALL=ja_JP.UTF-8
 export PAGER=less
-export EDITOR=vim
-## PATH
+
+#==============================
+# Path
+#==============================
 export PATH=${PATH}:${HOME}/bin:/usr/local/bin:/usr/local/sbin:/usr/local/share/hyperestraier/filter
-## auto change directory
-setopt auto_cd
-## auto directory pushd that you can get dirs list by cd -[tab]
-setopt auto_pushd
-## command correct edition before each completion attempt
-setopt correct
-## compacked complete list display
-setopt list_packed
-## no remove postfix slash of command line
-setopt noautoremoveslash
-## no remove postfix slash of command line
-setopt noautoremoveslash
-## no beep sound when complete list displayed
-setopt nolistbeep
-## Keybind configuration
-bindkey -e
-## historical backward/forward search with linehead string binded to ^P/^N
-autoload history-search-end
-zle -N history-beginning-search-backward-end history-search-end
-zle -N history-beginning-search-forward-end history-search-end
-bindkey "^p" history-beginning-search-backward-end
-bindkey "^n" history-beginning-search-forward-end
-bindkey "\\ep" history-beginning-search-backward-end
-bindkey "\\en" history-beginning-search-forward-end
-## Command history configuration
+
+#==============================
+# Zsh options
+#==============================
+setopt auto_cd # auto change directory, cd foo -> foo
+setopt auto_pushd # auto directory pushd, you can get dirs list by cd -[tab]
+setopt correct # command correct edition before each completion attempt
+setopt list_packed # compacked complete list display
+setopt noautoremoveslash # no remove postfix slash of command line
+setopt nolistbeep # no beep sound when complete list displayed
+
+#==============================
+# Command history
+#==============================
 HISTFILE=~/.zsh_history
 HISTSIZE=50000
 SAVEHIST=50000
 setopt hist_ignore_dups # ignore duplication command history list
 setopt share_history # share command history data
-## Completion configuration
-autoload -U compinit
-compinit
-## Alias configuration
+autoload history-search-end
+## install peco before initialize zsh
+## go get github.com/peco/peco/cmd/peco
+function peco-select-history() {
+    local tac
+    if which tac > /dev/null; then
+        tac="tac"
+    else
+        tac="tail -r"
+    fi
+    BUFFER=$(\history -n 1 | \
+        eval $tac | \
+        peco --query "$LBUFFER")
+    CURSOR=$#BUFFER
+    zle clear-screen
+}
+zle -N peco-select-history
+bindkey '^r' peco-select-history
+
+#==============================
+# Alias
+#==============================
 setopt complete_aliases # aliased ls needs if file/dir completions work
 alias where="command -v"
 alias j="jobs -l"
@@ -62,7 +73,23 @@ alias screen="export SCREEN=YES ; screen -U -T ${TERM}"
 alias vim="nocorrect vim"
 alias vagrant='nocorrect vagrant'
 alias va='vagrant'
-## terminal configuration
+alias g='g'
+alias be='bundle exec'
+
+#==============================
+# Editor
+#==============================
+export EDITOR=vim
+
+#==============================
+# Completion configuration
+#==============================
+autoload -U compinit
+compinit
+
+#==============================
+# Terminal configuration
+#==============================
 unset LSCOLORS
 case "${TERM}" in
 xterm)
@@ -99,45 +126,32 @@ kterm*|xterm*)
    'di=34' 'ln=35' 'so=32' 'ex=31' 'bd=46;34' 'cd=43;34'
   ;;
 esac
-if [ "$SCREEN" = "YES" ]; then
-#       chpwd () { echo -n "\" }
-#       preexec() {
-#               # see [zsh-workers:13180]
-#               # http://www.zsh.org/mla/workers/2000/msg03993.html
-#               emulate -L zsh
-#               local -a cmd; cmd=(${(z)2})
-#               case $cmd[1] in
-#                       fg)
-#                               if (( $#cmd == 1 )); then
-#                                       cmd=(builtin jobs -l %+)
-#                               else
-#                                       cmd=(builtin jobs -l $cmd[2])
-#                               fi
-#                               ;;
-#                       %*) 
-#                               cmd=(builtin jobs -l $cmd[1])
-#                               ;;
-#                       cd)
-#                               if (( $#cmd == 2)); then
-#                                       cmd[1]=$cmd[2]
-#                               fi
-#                               ;&
-#                       *)
-#                               echo -n "\"
-#                               return
-#                               ;;
-#               esac
-#               local -A jt; jt=(${(kv)jobtexts})
-#               $cmd >>(read num rest
-#                       cmd=(${(z)${(e):-\$jt$num}})
-#                       echo -n "\") 2>/dev/null
-#       }
-#       chpwd
-fi
 ## load user .zshrc configuration file
 [ -f ~/.zshrc.mine ] && source ~/.zshrc.mine
 
-# autojump
-[[ -s ~/.autojump/etc/profile.d/autojump.zsh ]] && . ~/.autojump/etc/profile.d/autojump.zsh
+#==============================
+# Ruby
+#==============================
+eval "$(rbenv init -)"
+export PATH="$HOME/.rbenv/shims:$PATH"
+export PATH="$HOME/.gem/ruby/2.0.0/bin:$PATH"
 
-PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+#==============================
+# Node
+#==============================
+[[ -s /Users/foostan/.nvm/nvm.sh ]] && . /Users/foostan/.nvm/nvm.sh
+nvm use v0.10.25
+npm_dir=${NVM_PATH}_modules
+export NODE_PATH=$npm_dir
+
+#==============================
+# Go
+#==============================
+export GOPATH="$HOME/.go"
+export GOROOT="/usr/local/go"
+export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
+
+#==============================
+# Docker
+#==============================
+export DOCKER_HOST=tcp://$(boot2docker ip 2>/dev/null):2375
