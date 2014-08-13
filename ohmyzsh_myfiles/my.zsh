@@ -73,7 +73,7 @@ alias screen="export SCREEN=YES ; screen -U -T ${TERM}"
 alias vim="nocorrect vim"
 alias vagrant='nocorrect vagrant'
 alias va='vagrant'
-alias g='g'
+alias g='git'
 alias be='bundle exec'
 
 #==============================
