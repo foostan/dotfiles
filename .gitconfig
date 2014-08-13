@@ -8,13 +8,16 @@
 [alias]
     graph = log --graph --decorate --oneline
     a = add
+    b = checkout -b
     c = commit -v
     cm = commit -vm
     d = diff
     dc = diff --cached
+    o = checkout
     p = pull
     pr = pull --rebase
     pu = push
+    puu = push -u
     s = status
     ss = status -s
 [push]

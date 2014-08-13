@@ -130,6 +130,17 @@ esac
 [ -f ~/.zshrc.mine ] && source ~/.zshrc.mine
 
 #==============================
+# Peco
+#==============================
+alias -g P='| peco'
+
+#==============================
+# Git
+#==============================
+alias -g B='`git branch -a | peco --prompt "GIT BRANCH>" | head -n 1 | sed -e "s/^\*\s*//g"`'
+alias -g R='`git remote | peco --prompt "GIT REMOTE>" | head -n 1`'
+
+#==============================
 # Ruby
 #==============================
 eval "$(rbenv init -)"
