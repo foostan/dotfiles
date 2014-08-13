@@ -12,6 +12,9 @@
     cm = commit -vm
     d = diff
     dc = diff --cached
+    p = pull
+    pr = pull --rebase
+    pu = push
     s = status
     ss = status -s
 [push]
