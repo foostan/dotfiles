@@ -1,0 +1,11 @@
+[user]
+    name = foostan
+    email = ks@fstn.jp
+[color]
+    ui = auto
+[core]
+    editor = vim
+[alias]
+    graph = log --graph --decorate --oneline
+[push]
+    default = matching
