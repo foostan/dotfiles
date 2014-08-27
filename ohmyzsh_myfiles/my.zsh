@@ -82,12 +82,6 @@ alias be='bundle exec'
 export EDITOR=vim
 
 #==============================
-# Completion configuration
-#==============================
-autoload -U compinit
-compinit
-
-#==============================
 # Terminal configuration
 #==============================
 unset LSCOLORS
@@ -158,7 +152,7 @@ export NODE_PATH=$npm_dir
 #==============================
 # Go
 #==============================
-export GOPATH="$HOME/.go"
+export GOPATH="$HOME/sandbox/go"
 export GOROOT="/usr/local/go"
 export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
 
