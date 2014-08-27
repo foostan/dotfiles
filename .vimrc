@@ -267,6 +267,7 @@ NeoBundle 'vim-jp/vimdoc-ja'
 NeoBundle 'briancollins/vim-jst'
 NeoBundle 'glidenote/memolist.vim'
 NeoBundle 'Shougo/vimfiler'
+NeoBundle 'terryma/vim-multiple-cursors'
 
 filetype plugin indent on
 NeoBundleCheck
