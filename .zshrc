@@ -8,6 +8,7 @@ plugins=(
     #==============================
     enter
     peco-history
+    peco-ssh
 
     #==============================
     # official
