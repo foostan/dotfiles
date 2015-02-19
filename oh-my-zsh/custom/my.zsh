@@ -152,7 +152,7 @@ export NODE_PATH=$npm_dir
 #==============================
 # Go
 #==============================
-export GOPATH="$HOME/sandbox/go"
+export GOPATH="$HOME/sandbox"
 export GOROOT="/usr/local/go"
 export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
 
