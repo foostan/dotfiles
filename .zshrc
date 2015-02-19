@@ -7,6 +7,7 @@ plugins=(
     # custom
     #==============================
     enter
+    peco-history
 
     #==============================
     # official
