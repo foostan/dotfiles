@@ -2,5 +2,26 @@
 ZSH=$HOME/.oh-my-zsh
 ZSH_THEME="my"
 COMPLETION_WAITING_DOTS="true"
-plugins=(enter autojump brew bundler copydir copyfile cp gem git git-extras git-flow git-flow-avh git-hubflow git-remote-branch gitfast github history knife knife_ssh osx perl rails rake rsync ruby tmux tmuxinator vagrant)
+plugins=(
+    #==============================
+    # custom
+    #==============================
+    enter
+
+    #==============================
+    # official
+    #==============================
+    # language
+    golang
+
+    # git
+    git
+    gitfast
+
+    # virtualization
+    vagrant
+
+    # others
+    osx
+)
 source $ZSH/oh-my-zsh.sh
