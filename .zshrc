@@ -9,6 +9,7 @@ plugins=(
     enter
     peco-history
     peco-ssh
+    peco-pushd
 
     #==============================
     # official
