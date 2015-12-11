@@ -119,28 +119,23 @@ alias -g B='`git branch -a | peco --prompt "GIT BRANCH>" | head -n 1 | sed -e "s
 alias -g R='`git remote | peco --prompt "GIT REMOTE>" | head -n 1`'
 
 #==============================
-# Ruby
-#==============================
-eval "$(rbenv init -)"
-export PATH="$HOME/.rbenv/shims:$PATH"
-export PATH="$HOME/.gem/ruby/2.0.0/bin:$PATH"
-
-#==============================
 # Node
 #==============================
-[[ -s /Users/foostan/.nvm/nvm.sh ]] && . /Users/foostan/.nvm/nvm.sh
-nvm use v0.10.25 1>/dev/null
-npm_dir=${NVM_PATH}_modules
-export NODE_PATH=$npm_dir
+export PATH="$HOME/.nodebrew/node/v4.2.2/bin:$PATH"
+
+#==============================
+# Ruby
+#==============================
+export PATH="$HOME/.rbenv/shims:$PATH"
 
 #==============================
 # Go
 #==============================
-export GOPATH="$HOME/sandbox"
+export GOPATH=$HOME
 export GOROOT="/usr/local/go"
 export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
 
 #==============================
-# Docker
+# MySQL
 #==============================
-export DOCKER_HOST=tcp://$(boot2docker ip 2>/dev/null):2375
+export PATH=$PATH:/usr/local/opt/mysql55/bin

@@ -8,7 +8,7 @@ peco-pushd() {
     return 1
   fi
 
-  local DIR=$(find ${BASE_DIR} -maxdepth ${MAXDEPTH} -name ${FILENAME} | peco | head -n 1)
+  local DIR=$(find ${BASE_DIR} -maxdepth ${MAXDEPTH} -name ${FILENAME} | peco --layout=bottom-up | head -n 1)
 
   if [ -n "$DIR" ] ; then
     DIR=${DIR%/*}

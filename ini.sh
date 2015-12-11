@@ -9,8 +9,8 @@ git submodule update
 ln -sf $DOTFILE_PATH/.vim/colors/molokai/colors/molokai.vim $DOTFILE_PATH/.vim/colors/molokai.vim
 
 # set up oh-my-zsh files
-rm -rf $DOTFILE_PATH/oh-my-zsh/custom
-ln -sf $DOTFILE_PATH/oh-my-zsh/custom .oh-my-zsh/custom
+rm -rf $HOME/.oh-my-zsh/custom
+ln -sf $DOTFILE_PATH/oh-my-zsh/custom $HOME/.oh-my-zsh/custom
 
 # set up dotfiles
 for dotfile in .?*

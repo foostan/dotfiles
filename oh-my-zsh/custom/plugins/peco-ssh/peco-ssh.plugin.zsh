@@ -7,7 +7,7 @@ function peco-ssh() {
         }
       }
     }
-  ' ~/.ssh/config | sort | peco)
+  ' ~/.ssh/config | sort | peco --layout=bottom-up)
 }
 zle -N peco-ssh
 bindkey '^s' peco-ssh
