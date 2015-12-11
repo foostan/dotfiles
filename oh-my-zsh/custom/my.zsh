@@ -132,7 +132,7 @@ export PATH="$HOME/.rbenv/shims:$PATH"
 # Go
 #==============================
 export GOPATH=$HOME
-export GOROOT="/usr/local/go"
+export GOROOT="/usr/local/Cellar/go/1.5.1/libexec"
 export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
 
 #==============================
