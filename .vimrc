@@ -39,6 +39,7 @@ set tabstop=4 shiftwidth=4 softtabstop=0 " インデント設定
 autocmd FileType ruby set tabstop=2 shiftwidth=2 softtabstop=0 " インデント設定
 "set noexpandtab                   " タブのスペース変換の無効化
 set expandtab                      " タブのスペース変換の有効化
+
 set modelines=0                    " modelineの無効化
 set clipboard+=unnamed             " クリップボードの使用
 set autoindent                     " オートインデント
@@ -261,6 +262,7 @@ NeoBundle 'Shougo/vimproc',{
       \ }
 NeoBundle 'Shougo/neocomplcache'
 NeoBundle 'Shougo/neosnippet'
+NeoBundle 'Shougo/neosnippet-snippets'
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'Shougo/unite-outline', '', 'default'
 NeoBundle 'vim-jp/vimdoc-ja'
