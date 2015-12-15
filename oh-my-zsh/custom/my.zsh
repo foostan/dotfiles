@@ -139,3 +139,8 @@ export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
 # MySQL
 #==============================
 export PATH=$PATH:/usr/local/opt/mysql55/bin
+
+#==============================
+# Docker
+#==============================
+eval "$(docker-machine env default)"
